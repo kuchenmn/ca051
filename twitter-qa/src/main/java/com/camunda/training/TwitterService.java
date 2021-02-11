@@ -3,11 +3,12 @@ package com.camunda.training;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 
-@Component
+@Service
 public class TwitterService {
     private final Logger LOGGER = LoggerFactory.getLogger(TwitterService.class.getName());
 

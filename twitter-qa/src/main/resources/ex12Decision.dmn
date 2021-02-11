@@ -15,7 +15,7 @@
       <output id="approved" label="approved" name="approved" typeRef="boolean" />
       <rule id="DecisionRule_0y6r6w6">
         <inputEntry id="UnaryTests_0p5q479">
-          <text>"norbert.kuchenmeister@camunda.org"</text>
+          <text>norbert.kuchenmeister@camunda.org</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1mpoofw">
           <text></text>

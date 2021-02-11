@@ -23,8 +23,11 @@ import static org.camunda.bpm.engine.test.assertions.ProcessEngineTests.init;
 import static org.camunda.bpm.engine.test.assertions.ProcessEngineTests.runtimeService;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.complete;
 import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class ProcessJUnitTest8 {
     @Mock
@@ -44,6 +47,8 @@ public class ProcessJUnitTest8 {
     @Test
     @Deployment(resources = "ex8.bpmn")
     public void testHappyPath() throws Exception {
+        Long expected = 50L;
+        when(twitterService.publishTweet(anyString())).thenReturn(expected);
         // Create a HashMap to put in variables for the process instance
         Map<String, Object> variables = new HashMap<>();
         variables.put("content", "Exercise 8 test");
@@ -53,7 +58,6 @@ public class ProcessJUnitTest8 {
         assertThat(processInstance).task("ReviewTweetTask");
         assertThat(processInstance).task().hasCandidateGroup("management");
         complete(task(), withVariables("approved", true));
-
         List<Job> jobList = jobQuery()
                 .processInstanceId(processInstance.getId())
                 .list();
@@ -63,6 +67,7 @@ public class ProcessJUnitTest8 {
         Job job = jobList.get(0);
         execute(job);
         verify(twitterService).publishTweet(anyString());
+        assertEquals(expected, twitterService.publishTweet(anyString()));
         assertThat(processInstance).isEnded();
     }
 

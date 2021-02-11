@@ -97,8 +97,6 @@ public class ProcessJUnitTest11 {
     @Test
     @Deployment(resources = "ex11.bpmn")
     public void testTweetSuperUser() {
-        Map<String, Object> varMap = new HashMap<>();
-        varMap.put("approved", false);
         ProcessInstance processInstance = runtimeService()
                 .createMessageCorrelation("superuserTweet11")
                 .setVariable("content", "My Exercise 11 Tweet - " + System.currentTimeMillis())

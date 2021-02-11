@@ -23,10 +23,10 @@ public class NotificationWorker {
             Map<String, Object> variables = new HashMap<>();
             variables.put("notficationTimestamp", new Date());
             double rando = Math.random();
-            if (rando <= .33) {
+            if (rando <= .93) {
                 System.out.println("Sorry, your tweet has been rejected: " + content);
                 externalTaskService.complete(externalTask, variables);
-            } else if (rando >.33 && rando <= .66) {
+            } else if (rando >.33 && rando <= .92) {
                 System.out.println("there was an error: " + content);
                 externalTaskService.handleFailure(externalTask, "there was an error",
                         "There was an error in processesing this request", 0, 0);
