@@ -44,8 +44,8 @@ public class ProcessJUnitTest12 {
     public void testHappyPath() {
         // Create a HashMap to put in variables for the process instance
         Map<String, Object> variables = new HashMap<>();
-        variables.put("content", "Exercise 12 test - " + System.currentTimeMillis());
-        variables.put("email", "norbert.kuchenmeister@camunda.org");
+        variables.put("content", "camunda rocks");
+        variables.put("email", "jane.doe@foo.com");
         // Start process with Java API and variables
         ProcessInstance processInstance = runtimeService().startProcessInstanceByKey("TwitterQAProcessEx12", variables);
         // execute the job
