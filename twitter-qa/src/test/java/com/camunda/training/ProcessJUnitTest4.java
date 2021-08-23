@@ -14,7 +14,6 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import static org.camunda.bpm.engine.test.assertions.ProcessEngineTests.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
@@ -40,12 +39,13 @@ public class ProcessJUnitTest4 {
     public void testHappyPath() throws Exception {
         // Create a HashMap to put in variables for the process instance
         Map<String, Object> variables = new HashMap<>();
-        variables.put("content", "Exercise 4 Mock test");
+        String content = "Exercise 4 Mock test";
+        variables.put("content", content);
         variables.put("approved", true);
         // Start process with Java API and variables
         ProcessInstance processInstance = runtimeService().startProcessInstanceByKey("TwitterQAProcessEx4", variables);
         // Make assertions on the process instance
-        verify(twitterService).publishTweet(anyString());
+        verify(twitterService).publishTweet(content);
         assertThat(processInstance).isEnded();
     }
 
