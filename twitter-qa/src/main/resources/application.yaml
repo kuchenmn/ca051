@@ -12,4 +12,4 @@ camunda.bpm:
     lastName: Demo
   filter:
     create: All Tasks
-server.port: 8081
+server.port: 8080
